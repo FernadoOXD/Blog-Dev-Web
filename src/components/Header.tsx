@@ -16,13 +16,22 @@ function Header({ searchQuery: controlledSearchQuery, onSearchChange }: HeaderPr
         } else {
             setInternalSearchQuery(value);
         }
+
+        if (value.trim().length > 0 && typeof window !== 'undefined') {
+            const articulosSection = document.getElementById('articulos');
+            if (articulosSection) {
+                const rect = articulosSection.getBoundingClientRect();
+                if (rect.top > window.innerHeight || rect.bottom < 100) {
+                    articulosSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
     };
     return (
         <header className="sticky top-0 z-50 w-full bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80 text-zinc-200 font-sans shadow-xl">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 gap-4">
 
-                    {/* Logo */}
                     <div className="flex items-center gap-6">
                         <a href="#" className="flex items-center gap-3 group">
                             <div className="relative p-1 rounded-xl bg-gradient-to-tr from-cyan-500/20 via-purple-500/20 to-blue-500/20 group-hover:from-cyan-500/40 group-hover:to-purple-500/40 transition-all duration-300 shadow-md shadow-cyan-500/10">
@@ -47,9 +56,8 @@ function Header({ searchQuery: controlledSearchQuery, onSearchChange }: HeaderPr
                                 </span>
                             </div>
                         </a>
-                        {/* BARRA DE BÚSQUEDA (Desktop) */}
-                        <div className="relative hidden md:block w-64 lg:w-80">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+                        <div className="relative hidden md:block w-72 lg:w-96">
+                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-cyan-400">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
@@ -58,12 +66,26 @@ function Header({ searchQuery: controlledSearchQuery, onSearchChange }: HeaderPr
                                 type="text"
                                 value={searchQuery}
                                 onChange={(e) => handleSearchChange(e.target.value)}
-                                placeholder="Buscar artículos, tags, código..."
-                                className="w-full pl-9 pr-12 py-1.5 bg-zinc-900/90 border border-zinc-700/60 rounded-lg text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 font-mono transition-all duration-200"
+                                placeholder="Buscar artículos técnicos..."
+                                className="w-full pl-9 pr-14 py-1.5 bg-zinc-900/90 border border-zinc-700/60 rounded-lg text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 font-mono transition-all duration-200"
                             />
+                            {searchQuery ? (
+                                <button
+                                    type="button"
+                                    onClick={() => handleSearchChange('')}
+                                    className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-zinc-400 hover:text-white cursor-pointer"
+                                    title="Limpiar búsqueda"
+                                >
+                                    <span className="text-xs bg-zinc-800 hover:bg-zinc-700 px-1.5 py-0.5 rounded text-zinc-300">✕</span>
+                                </button>
+                            ) : (
+                                <span className="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none text-[10px] font-mono text-zinc-500 uppercase">
+                                    Posts
+                                </span>
+                            )}
                         </div>
                     </div>
-                    {/* Navegación */}
+
                     <nav className="hidden lg:flex items-center gap-1 font-mono text-sm">
                         <a
                             href="#"
@@ -78,6 +100,13 @@ function Header({ searchQuery: controlledSearchQuery, onSearchChange }: HeaderPr
                         >
                             <span className="text-purple-500/70 group-hover:text-purple-400">#</span>
                             <span>Artículos</span>
+                        </a>
+                        <a
+                            href="#proyectos"
+                            className="px-3 py-2 rounded-md text-zinc-300 hover:text-cyan-400 hover:bg-zinc-900 transition-colors flex items-center gap-1.5 group"
+                        >
+                            <span className="text-blue-500/70 group-hover:text-blue-400">#</span>
+                            <span>Proyectos</span>
                         </a>
                         <a
                             href="#sobre-mi"
@@ -115,7 +144,7 @@ function Header({ searchQuery: controlledSearchQuery, onSearchChange }: HeaderPr
                 {/* Búsqueda en móvil */}
                 <div className="md:hidden pb-3 pt-1">
                     <div className="relative w-full">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-cyan-400">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
@@ -124,9 +153,19 @@ function Header({ searchQuery: controlledSearchQuery, onSearchChange }: HeaderPr
                             type="text"
                             value={searchQuery}
                             onChange={(e) => handleSearchChange(e.target.value)}
-                            placeholder="Buscar en el blog..."
-                            className="w-full pl-9 pr-4 py-1.5 bg-zinc-900 border border-zinc-800 rounded-lg text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-cyan-500 font-mono"
+                            placeholder="Buscar artículos técnicos..."
+                            className="w-full pl-9 pr-10 py-1.5 bg-zinc-900 border border-zinc-800 rounded-lg text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-cyan-500 font-mono"
                         />
+                        {searchQuery && (
+                            <button
+                                type="button"
+                                onClick={() => handleSearchChange('')}
+                                className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-zinc-400 hover:text-white cursor-pointer"
+                                title="Limpiar búsqueda"
+                            >
+                                <span className="text-xs bg-zinc-800 px-1.5 py-0.5 rounded text-zinc-300">✕</span>
+                            </button>
+                        )}
                     </div>
                 </div>
                 {/* Menú hamburguesa para móvil */}
@@ -145,6 +184,13 @@ function Header({ searchQuery: controlledSearchQuery, onSearchChange }: HeaderPr
                             className="block px-3 py-2 rounded-md text-zinc-300 hover:text-cyan-400 hover:bg-zinc-900 transition-colors"
                         >
                             <span className="text-purple-400 mr-2">#</span>Artículos
+                        </a>
+                        <a
+                            href="#proyectos"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block px-3 py-2 rounded-md text-zinc-300 hover:text-cyan-400 hover:bg-zinc-900 transition-colors"
+                        >
+                            <span className="text-blue-400 mr-2">#</span>Proyectos
                         </a>
                         <a
                             href="#sobre-mi"

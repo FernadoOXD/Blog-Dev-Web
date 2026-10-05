@@ -5,7 +5,7 @@ interface CardArticuloProps {
   onSelect: (articulo: Articulo) => void;
 }
 
-// Mapa de colores por categoría para el estilo DEV
+// Mapa de colores por categoría
 const getTagColor = (tag: string) => {
   switch (tag.toLowerCase()) {
     case 'frontend':
@@ -68,18 +68,13 @@ export function CardArticulo({ articulo, onSelect }: CardArticuloProps) {
           </div>
         </div>
 
-        {/* Título */}
         <h3 className="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-200 line-clamp-2 leading-snug mb-3 font-sans">
           {articulo.titulo}
         </h3>
-
-        {/* Resumen */}
         <p className="text-sm text-zinc-400 line-clamp-3 leading-relaxed mb-6 font-sans">
           {articulo.resumen}
         </p>
       </div>
-
-      {/* Footer de la Card */}
       <div className="pt-4 border-t border-zinc-800/80 flex items-center justify-between text-xs font-mono">
         <span className="text-zinc-400 flex items-center gap-1">
           <span className="text-zinc-500">//</span>

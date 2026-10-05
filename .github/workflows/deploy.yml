@@ -22,6 +22,8 @@ jobs:
 
       - name: Install, build, and upload your site
         uses: withastro/action@v3
+        with:
+          node-version: 22 # Modificado para usar la versión 22
         # with:
         # node-version: 20 # Descomenta esta línea si necesitas una versión específica de Node
         # package-manager: npm # Opcional: Astro lo detecta automáticamente por tu package-lock.json

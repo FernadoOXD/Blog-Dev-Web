@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -104,7 +106,16 @@ export function Footer() {
                 <span className="text-zinc-500 group-hover:text-purple-400 text-xs transition-transform group-hover:translate-x-0.5">&rarr;</span>
               </a>
             </div>
-          </div>
+                      </div>
+            <div className="pt-4">
+              <a href="#contacto"
+                className="w-full py-2.5 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors"
+              >
+                <span>// Conectar en Contacto</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+            </div>
 
         </div>
 
@@ -119,7 +130,7 @@ export function Footer() {
             <span>&uarr;</span>
           </a>
         </div>
-      </div>
+
     </footer>
   );
 }

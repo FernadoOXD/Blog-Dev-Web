@@ -1,4 +1,5 @@
 import type { Articulo } from '../data/articulos';
+import { getAssetPath } from '../utils/assets';
 
 interface CardArticuloProps {
   articulo: Articulo;
@@ -42,10 +43,10 @@ export function CardArticulo({ articulo, onSelect }: CardArticuloProps) {
         {articulo.imagenCabecera && (
           <div className="mb-4 h-44 w-full overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-950/80 relative flex items-center justify-center">
             <img
-              src={articulo.imagenCabecera}
+              src={getAssetPath(articulo.imagenCabecera)}
               alt={articulo.titulo}
               onError={(e) => {
-                (e.target as HTMLImageElement).src = '/img/ToArt/default_image.webp';
+                (e.target as HTMLImageElement).src = getAssetPath('img/ToArt/default_image.webp');
               }}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"

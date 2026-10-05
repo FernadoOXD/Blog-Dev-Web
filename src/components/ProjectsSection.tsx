@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { proyectos, type Proyecto } from '../data/proyectos';
-
+import { getAssetPath } from '../utils/assets';
 const getCategoryColor = (categoria: string) => {
   switch (categoria.toLowerCase()) {
     case 'frontend':
@@ -124,10 +124,10 @@ export function ProjectsSection() {
                     {proyecto.imagen && (
                       <div className="mb-5 h-48 sm:h-56 w-full overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-950/80 relative flex items-center justify-center">
                         <img
-                          src={proyecto.imagen}
+                          src={getAssetPath(proyecto.imagen)}
                           alt={proyecto.titulo}
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = '/img/ToArt/default_image.webp';
+                            (e.target as HTMLImageElement).src = getAssetPath('img/ToArt/default_image.webp');
                           }}
                           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                           loading="lazy"

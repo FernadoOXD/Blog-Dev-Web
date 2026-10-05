@@ -1,3 +1,5 @@
+import { getAssetPath } from '../utils/assets';
+
 interface TechSkill {
   name: string;
   category: string;
@@ -49,11 +51,11 @@ export function AboutSection() {
             <div className="flex items-center gap-4 border-b border-zinc-800 pb-4">
               <div className="relative p-1.5 rounded-2xl bg-gradient-to-tr from-cyan-500/20 via-purple-500/20 to-blue-500/20 border border-zinc-700/60 shadow-lg shadow-cyan-500/5">
                 <img
-                  src="/img/logoFRG_definitivo.webp"
+                  src={getAssetPath('img/logoFRG_definitivo.webp')}
                   alt="Fernando R. G. Logo"
                   className="h-11 w-11 object-contain rounded-xl"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/img/logoFRG_definitivo.webp';
+                    (e.target as HTMLImageElement).src = getAssetPath('img/logoFRG_definitivo.webp');
                   }}
                 />
               </div>

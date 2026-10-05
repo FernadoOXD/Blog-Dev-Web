@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import type { Articulo } from '../data/articulos';
 import { BloqueCodigo } from './BloqueCodigo';
+import { getAssetPath } from '../utils/assets';
 
 interface ModalArticuloProps {
   articulo: Articulo | null;
@@ -101,10 +102,10 @@ export function ModalArticulo({ articulo, onClose }: ModalArticuloProps) {
             <div className="rounded-2xl overflow-hidden border border-zinc-800/90 bg-zinc-950/80 p-2 sm:p-3 shadow-xl flex items-center justify-center">
               <div className="w-full flex items-center justify-center bg-zinc-950/60 rounded-xl overflow-hidden border border-zinc-900">
                 <img
-                  src={articulo.imagenCabecera}
+                  src={getAssetPath(articulo.imagenCabecera)}
                   alt={articulo.titulo}
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/img/ToArt/default_image.webp';
+                    (e.target as HTMLImageElement).src = getAssetPath('img/ToArt/default_image.webp');
                   }}
                   className="w-full h-auto max-h-72 sm:max-h-96 md:max-h-[420px] object-contain rounded-lg transition-transform duration-300 hover:scale-[1.01]"
                   loading="lazy"
@@ -158,10 +159,10 @@ export function ModalArticulo({ articulo, onClose }: ModalArticuloProps) {
                   <figure className="my-6 rounded-2xl overflow-hidden border border-zinc-800/90 bg-zinc-950/80 p-2 sm:p-4 space-y-2.5 shadow-xl">
                     <div className="flex items-center justify-center w-full bg-zinc-950/60 rounded-xl overflow-hidden border border-zinc-900">
                       <img
-                        src={seccion.imagen.src}
+                        src={getAssetPath(seccion.imagen.src)}
                         alt={seccion.imagen.alt}
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = '/img/ToArt/default_image.webp';
+                          (e.target as HTMLImageElement).src = getAssetPath('img/ToArt/default_image.webp');
                         }}
                         className="w-full h-auto max-h-[550px] object-contain rounded-lg transition-transform duration-300 hover:scale-[1.01]"
                         loading="lazy"

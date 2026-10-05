@@ -1,3 +1,5 @@
+import { getAssetPath } from '../utils/assets';
+
 function Hero() {
   return (
     <section className="relative overflow-hidden py-12 md:py-20 lg:py-24 bg-zinc-950 border-b border-zinc-800/60">
@@ -87,10 +89,10 @@ function Hero() {
 
                 <div className="p-2 sm:p-4 bg-zinc-950/60 flex items-center justify-center">
                   <img
-                    src="/img/code_img-hero.png"
+                    src={getAssetPath('img/code_img-hero.png')}
                     alt="Code & Modern Stack Architecture"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/img/code_img-hero.png';
+                      (e.target as HTMLImageElement).src = getAssetPath('img/code_img-hero.png');
                     }}
                     className="w-full h-auto object-cover rounded-lg transform hover:scale-[1.02] transition-transform duration-300 shadow-md"
                   />

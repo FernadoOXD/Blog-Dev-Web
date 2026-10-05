@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getAssetPath } from '../utils/assets';
 
 interface HeaderProps {
     searchQuery?: string;
@@ -36,10 +37,10 @@ function Header({ searchQuery: controlledSearchQuery, onSearchChange }: HeaderPr
                         <a href="#" className="flex items-center gap-3 group">
                             <div className="relative p-1 rounded-xl bg-gradient-to-tr from-cyan-500/20 via-purple-500/20 to-blue-500/20 group-hover:from-cyan-500/40 group-hover:to-purple-500/40 transition-all duration-300 shadow-md shadow-cyan-500/10">
                                 <img
-                                    src="/img/logoFRG_definitivo.webp"
+                                    src={getAssetPath('img/logoFRG_definitivo.webp')}
                                     alt="FRG Logo"
                                     onError={(e) => {
-                                        (e.target as HTMLImageElement).src = '/img/logoFRG_definitivo.webp';
+                                        (e.target as HTMLImageElement).src = getAssetPath('img/logoFRG_definitivo.webp');
                                     }}
                                     className="h-10 w-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
                                 />

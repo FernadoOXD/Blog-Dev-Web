@@ -7,7 +7,7 @@ export function Footer() {
     <footer id="contacto" className="bg-zinc-950 border-t border-zinc-800/80 text-zinc-400 font-sans text-sm relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start text-left">
-          
+
           {/* Columna Marca & Bio */}
           <div className="md:col-span-6 space-y-4">
             <div className="flex items-center gap-2">
@@ -106,30 +106,22 @@ export function Footer() {
                 <span className="text-zinc-500 group-hover:text-purple-400 text-xs transition-transform group-hover:translate-x-0.5">&rarr;</span>
               </a>
             </div>
-                      </div>
-            <div className="pt-4">
-              <a href="#contacto"
-                className="w-full py-2.5 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-colors"
-              >
-                <span>// Conectar en Contacto</span>
-                <span>&rarr;</span>
-              </a>
-            </div>
-            </div>
-
+          </div>
         </div>
 
-        {/* Barra inferior */}
-        <div className="mt-12 pt-6 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-zinc-400">
-          <p>© {currentYear} Blog-DEV — Fernando R. G. Todos los derechos reservados.</p>
-          <a
-            href="#"
-            className="hover:text-cyan-400 transition-colors flex items-center gap-1"
-          >
-            <span>Volver arriba</span>
-            <span>&uarr;</span>
-          </a>
-        </div>
+      </div>
+
+      {/* Barra inferior */}
+      <div className="mt-12 pt-6 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-zinc-400">
+        <p>© {currentYear} Blog-DEV — Fernando R. G. Todos los derechos reservados.</p>
+        <a
+          href="#"
+          className="hover:text-cyan-400 transition-colors flex items-center gap-1"
+        >
+          <span>Volver arriba</span>
+          <span>&uarr;</span>
+        </a>
+      </div>
 
     </footer>
   );

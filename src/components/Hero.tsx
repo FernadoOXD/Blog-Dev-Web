@@ -82,17 +82,16 @@ function Hero() {
                     <svg className="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
-                    <span>App.tsx — Developer Notes</span>
                   </div>
                   <div className="w-8"></div>
                 </div>
 
                 <div className="p-2 sm:p-4 bg-zinc-950/60 flex items-center justify-center">
                   <img
-                    src={getAssetPath('img/code_img-hero.png')}
+                    src={getAssetPath('img/foto_me.png')}
                     alt="Code & Modern Stack Architecture"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = getAssetPath('img/code_img-hero.png');
+                      (e.target as HTMLImageElement).src = getAssetPath('img/foto_me.png');
                     }}
                     className="w-full h-auto object-cover rounded-lg transform hover:scale-[1.02] transition-transform duration-300 shadow-md"
                   />
@@ -105,9 +104,6 @@ function Hero() {
                       Ready
                     </span>
                     <span>UTF-8</span>
-                  </div>
-                  <div className="text-cyan-400/80">
-                    TypeScript 5.x
                   </div>
                 </div>
 

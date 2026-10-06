@@ -73,4 +73,5 @@ export const proyectos: Proyecto[] = [
       'Diseño UI/UX limpio y responsive'
     ]
   }
+  
 ];

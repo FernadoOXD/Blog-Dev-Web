@@ -48,8 +48,8 @@ function Header({ searchQuery: controlledSearchQuery, onSearchChange }: HeaderPr
                             <div className="flex flex-col">
                                 <span className="font-mono font-bold text-lg tracking-tight text-white flex items-center gap-1">
                                     <span className="text-cyan-400">&lt;</span>
-                                    <span>Blog</span>
-                                    <span className="text-purple-400">DEV</span>
+                                    <span>Tech</span>
+                                    <span className="text-purple-400">Insights</span>
                                     <span className="text-cyan-400">/&gt;</span>
                                 </span>
                                 <span className="text-[10px] font-mono text-zinc-400 tracking-wider uppercase -mt-1 hidden sm:block">
